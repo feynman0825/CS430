@@ -1,8 +1,8 @@
-### 1
+## 1
 
-#### k >= d
+### k >= d
 
-$0 \le f(n) < c \cdot g(n)$ for all $n \geq n_0$
+<img src="https://render.githubusercontent.com/render/math?math=0 \le f(n) < c \cdot g(n)$ for all $n \geq n_0">
 
 $0 \le n^d < c \cdot n^k$
 
