@@ -1,5 +1,4 @@
 #include <limits.h>
-#include <memory.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -36,48 +35,6 @@ void merge(int* A, int p, int q, int r) {
 
     free(L);
     free(R);
-}
-
-void another_merge(int* A, int p, int q, int r) {
-
-    // copy the left part to a new alloc memory
-    int leftHalfElementCount = q - p;
-    int* leftStart = malloc(sizeof(int) * leftHalfElementCount);
-    memcpy(leftStart, A + p, sizeof(int) * leftHalfElementCount);
-
-    // right part use the original array memory
-    int rightHalfElementCount = r - q;
-    int* rightStart = A + q;
-
-    int leftHalfElementTraveled = 0;
-    int rightHalfElementTraveled = 0;
-
-    // the merge target is the begin of the original left part, we have made a
-    // copy of the left part, so we don't worry about overriding.
-    int* target = A + p;
-
-    // if the two part all have element untraveled, we compare them
-    while (leftHalfElementTraveled < leftHalfElementCount &&
-           rightHalfElementTraveled < rightHalfElementCount) {
-
-        if (leftStart[leftHalfElementTraveled] <= rightStart[rightHalfElementTraveled]) {
-            *(target++) = leftStart[leftHalfElementTraveled++];
-        } else {
-            *(target++) = rightStart[rightHalfElementTraveled++];
-        }
-    }
-
-    // if the right part exhaust it's elements, we copy all left elements of
-    // the left part to the target, if the left part exhaust it's elements, we
-    // do nothing, because it's already sorted in the target
-    if (rightHalfElementTraveled == rightHalfElementCount) {
-        memcpy(target,
-               leftStart + leftHalfElementTraveled,
-               sizeof(int) * (leftHalfElementCount - leftHalfElementTraveled));
-    }
-
-    // free the left copy
-    free(leftStart);
 }
 
 void merge_sort(int* A, int p, int r) {
