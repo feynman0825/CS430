@@ -3,14 +3,14 @@
 
 #define N 3
 
-int** square_matrix_multiply(int A[][N], int B[][N], int n){
-    int** C = (int**)malloc(n * sizeof(int*));
+int** square_matrix_multiply(int A[][N], int B[][N]){
+    int** C = (int**)malloc(N * sizeof(int*));
 
-    for(int i=0;i<n;i++){
-    	C[i] = (int*)malloc(n * sizeof(int*));
-        for(int j=0;j<n;j++){
+    for(int i=0;i<N;i++){
+    	C[i] = (int*)malloc(N * sizeof(int*));
+        for(int j=0;j<N;j++){
 	    C[i][j] = 0;
-	    for(int k=0;k<n;k++){
+	    for(int k=0;k<N;k++){
 		C[i][j] += A[i][k] * B[k][j];
 	    }
 	}
@@ -41,7 +41,7 @@ int main(){
     }
     printf("\n");
 
-    int** C = square_matrix_multiply(A, B, N);
+    int** C = square_matrix_multiply(A, B);
 
     printf("Result: \n");
     for(int i=0;i < N; ++i){
