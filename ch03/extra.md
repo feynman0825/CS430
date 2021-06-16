@@ -73,3 +73,17 @@
 18. lg(ceil(f(n))) = theta(lg(f(n))) when n>=n0, f(n)^2 >= f(n) + 1.
     0 =< lg(f(n)) =< lg(ceil(f(n)))
     0 =< lg(ceil(f(n))) =< lg(f(n) + 1) =< lg(f(n)^2) = 2lg(f(n))
+
+19. if f(n) = O(g(n)), g(n) is monotonically increasing and limit g(n) = infinity, then lg(f(n)) = O(lg(g(n)))
+    exist c>0 n0,  0 =< f(n) <= c*g(n) when n >= n0
+    because lg is monotonically increasing function, 0 =< lg(f(n)) =< lg(c*g(n)) = lg(c) + lg(g(n))
+    1. if c =< 1, then lg(c) <= 0, so 0 =< lg(f(n)) =< lg(g(n))
+    2. if c > 1, then lg(c) > 0, we can choose n1, lg(c)*lg(g(n)) >= lg(c) when n>=n1, so lg(f(x)) =< (lg(c) + 1)*lg(g(n))  when n >= max(n0, n1).
+    that is lg(f(n)) = O(lg(g(n))
+
+20. if f(n) = W(g(n)), g(n) is monotonically increasing and limit g(n) = infinity, then lg(f(n)) = W(lg(g(n)))
+    exist c>0 n0,  0 =< c*g(n) =< f(n) when n >= n0
+    because lg is monotonically increasing function, 0 =< lg(c*g(n)) = lg(c) + lg(g(n)) =< lg(f(n))
+    1. if c>=1, then lg(c) >= 0, so 0 < lg(g(n)) = lg(f(n))
+    2. if c<1, then lg(c) < 0, lg(c) + lg(g(n)) = lg(c) + 1/2*lg(g(n)) + 1/2*lg(g(n)), we can choose n1, lg(c) + 1/2*lg(g(n)) >= 0 when n>=n1, so 0 =< 1/2*lg(g(n)) < lg(f(n)) when n >= max(n0,n1).
+    that is lg(f(n)) = W(lg(g(n))
